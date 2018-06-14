@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+
+
+greendao {
+    schemaVersion 1 //数据库版本号
+    daoPackage 'com.awen.push.core.dao' //3 生成代码的路径
+    targetGenDir 'src/main/java' //父路径
+}
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-annotations:27.1.1'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.14'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0' //有异常处理的rxbus
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar' //6.0权限处理
+
+}
